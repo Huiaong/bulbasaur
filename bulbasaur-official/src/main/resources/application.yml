@@ -1,2 +1,7 @@
 server:
-  port: 9801
+  port: 80
+
+#获取到的 appid
+appid: wx554751a5251193ce
+#获取到的 AppSecret
+AppSecret: 39e3d5327e5532cf7e5c8ea9e9069beb
