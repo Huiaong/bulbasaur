@@ -14,8 +14,6 @@ public class URLProperties {
     private String fundIncrease;
 
     public String getFundIncrease(String replacement) {
-        String fund_code = fundIncrease.replace("FUND_CODE", replacement);
-        log.info(fund_code);
-        return fund_code;
+        return fundIncrease.replace("FUND_CODE", replacement);
     }
 }
