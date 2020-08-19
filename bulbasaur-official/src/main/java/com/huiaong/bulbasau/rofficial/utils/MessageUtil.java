@@ -50,7 +50,7 @@ public class MessageUtil {
      * @param @return
      * @param @throws Exception
      * @Description: 解析微信发来的请求（XML）
-     * @author dapengniao
+     * @author huiaong
      * @date 2016 年 3 月 7 日 上午 10:04:02
      */
     @SuppressWarnings("unchecked")
@@ -81,7 +81,7 @@ public class MessageUtil {
      * @param @param  textMessage
      * @param @return
      * @Description: 文本消息对象转换成 xml
-     * @author dapengniao
+     * @author huiaong
      * @date 2016 年 3 月 8 日 下午 4:13:22
      */
     public static String textMessageToXml(TextMessage textMessage) {
@@ -93,7 +93,7 @@ public class MessageUtil {
      * @param @param  newsMessage
      * @param @return
      * @Description: 图文消息对象转换成 xml
-     * @author dapengniao
+     * @author huiaong
      * @date 2016 年 3 月 8 日 下午 4:14:09
      */
     public static String newsMessageToXml(NewsMessage newsMessage) {
@@ -106,7 +106,7 @@ public class MessageUtil {
      * @param @param  imageMessage
      * @param @return
      * @Description: 图片消息对象转换成 xml
-     * @author dapengniao
+     * @author huiaong
      * @date 2016 年 3 月 9 日 上午 9:25:51
      */
     public static String imageMessageToXml(ImageMessage imageMessage) {
@@ -118,7 +118,7 @@ public class MessageUtil {
      * @param @param  voiceMessage
      * @param @return
      * @Description: 语音消息对象转换成 xml
-     * @author dapengniao
+     * @author huiaong
      * @date 2016 年 3 月 9 日 上午 9:27:26
      */
     public static String voiceMessageToXml(VoiceMessage voiceMessage) {
@@ -130,7 +130,7 @@ public class MessageUtil {
      * @param @param  videoMessage
      * @param @return
      * @Description: 视频消息对象转换成 xml
-     * @author dapengniao
+     * @author huiaong
      * @date 2016 年 3 月 9 日 上午 9:31:09
      */
     public static String videoMessageToXml(VideoMessage videoMessage) {
@@ -142,7 +142,7 @@ public class MessageUtil {
      * @param @param  musicMessage
      * @param @return
      * @Description: 音乐消息对象转换成 xml
-     * @author dapengniao
+     * @author huiaong
      * @date 2016 年 3 月 8 日 下午 4:13:36
      */
     public static String musicMessageToXml(MusicMessage musicMessage) {

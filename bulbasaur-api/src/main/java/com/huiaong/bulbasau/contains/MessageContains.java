@@ -1,5 +1,8 @@
 package com.huiaong.bulbasau.contains;
 
+import cn.hutool.core.util.StrUtil;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.REUtil;
+
 public class MessageContains {
 
     /**
@@ -96,4 +99,28 @@ public class MessageContains {
      * 事件类型：LOCATION(上报地理位置事件)
      */
     public static final String EVENT_TYPE_SCAN = "SCAN";
+
+    /**
+     * 处理类型：TEXT_FUND_CODE(基金代码)
+     */
+    public static final String PROCESS_TEXT_FUND_CODE = "TEXT_FUND_CODE";
+
+    /**
+     * 处理类型：TEXT_SHIT(未知文本)
+     */
+    public static final String PROCESS_TEXT_SHIT = "TEXT_SHIT";
+
+    /**
+     * 处理类型：QUESTION_MARK(提示文本)
+     */
+    public static final String PROCESS_QUESTION_MARK = "QUESTION_MARK";
+
+    public static String process(String text) {
+        if (StrUtil.equals("?", text) || StrUtil.equals("？", text)) {
+            return PROCESS_QUESTION_MARK;
+        } else if (REUtil.matches("\\d{6}", text)) {
+            return PROCESS_TEXT_FUND_CODE;
+        }
+        return PROCESS_TEXT_SHIT;
+    }
 }
