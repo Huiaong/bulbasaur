@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huiaong.bulbasau.rofficial.dao.IBulbasaurUserDao">
+    <resultMap id="userResultMap" type="User">
+        <id column="id" property="id"/>
+        <result column="open_id" property="openId"/>
+        <result column="status" property="status"/>
+        <result column="create_at" property="createAt"/>
+        <result column="update_at" property="updateAt"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <sql id="all_cols_exclude_id">
+        open_id, status, create_at, update_at, del_flag
+    </sql>
+
+    <sql id="all_cols">
+        id, <include refid="all_cols_exclude_id"/>
+    </sql>
+
+    <sql id="tb">
+        bulbasaur_user
+    </sql>
+
+    <select id="findById" resultMap="userResultMap">
+        select <include refid="all_cols"/> from <include refid="tb"/> where id = #{id}
+    </select>
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="User">
+        insert into <include refid="tb"/> (<include refid="all_cols_exclude_id"/>)
+        value (#{openId}, #{status}, #{createAt}, #{updateAt}, #{delFlag})
+    </insert>
+
+    <select id="userExistByOpenId" resultType="java.lang.Integer">
+        SELECT count(1) FROM <include refid="tb"/> where open_id = #{openId} and del_flag = 1 LIMIT 1
+    </select>
+
+    <update id="deleteUserByOpenId">
+        update <include refid="tb"/> set del_flag = 3 where open_id = #{openId}
+    </update>
+
+
+
+
+</mapper>
