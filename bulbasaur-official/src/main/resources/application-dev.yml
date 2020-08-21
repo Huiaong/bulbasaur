@@ -3,6 +3,12 @@ server:
 
 urls:
   Fund-Increase: http://fundgz.1234567.com.cn/js/FUND_CODE.js
+  Access-Token: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+  Menu-Generate: https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
+  #获取到的 appid
+  Appid: ${YOUR_APPID}
+  #获取到的 AppSecret
+  App-Secret: ${YOUR_APPSECRET}
 
 spring:
   datasource:
