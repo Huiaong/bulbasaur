@@ -12,4 +12,6 @@ public interface IBulbasaurUserDao {
     Integer userExistByOpenId(String openId);
 
     Integer deleteUserByOpenId(String openId);
+
+    User findByOpenId(String openId);
 }

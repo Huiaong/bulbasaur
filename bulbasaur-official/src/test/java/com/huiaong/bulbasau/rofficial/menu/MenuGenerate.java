@@ -37,7 +37,7 @@ public class MenuGenerate extends BulbasaurOfficialApplicationTests {
             HttpResponse accessTokenResponse = HttpUtil.createGet(urlProperties.getAccessToken()).execute();
             String accessTokenJson = accessTokenResponse.body();
             AccessToken accessToken = JSONUtil.toBean(accessTokenJson, AccessToken.class);
-            if (Objects.nonNull(accessToken.getErrcode()) && !Objects.equals(accessToken.getErrcode(), 0)){
+            if (Objects.nonNull(accessToken.getErrcode()) && !Objects.equals(accessToken.getErrcode(), 0)) {
                 log.error("an error happens [{}]", accessToken.getErrmsg());
                 return;
             }
@@ -48,7 +48,7 @@ public class MenuGenerate extends BulbasaurOfficialApplicationTests {
         HttpResponse menuResponse = HttpUtil.createPost(urlProperties.getMenuGenerate(token)).body(MENU_JSON).execute();
         String menuJson = menuResponse.body();
         Map<String, String> map = (Map<String, String>) JSONUtil.toBean(menuJson, Map.class);
-        if (!Objects.equals(map.get("errcode"), String.valueOf(0))){
+        if (!Objects.equals(map.get("errcode"), String.valueOf(0))) {
             log.error("failed to create menu");
             return;
         }

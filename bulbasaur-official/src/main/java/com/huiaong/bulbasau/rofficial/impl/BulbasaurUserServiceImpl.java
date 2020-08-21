@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BulbasaurUserUserServiceImpl implements IBulbasaurUserService {
+public class BulbasaurUserServiceImpl implements IBulbasaurUserService {
 
     @Autowired
     private IBulbasaurUserDao userDao;
@@ -31,5 +31,10 @@ public class BulbasaurUserUserServiceImpl implements IBulbasaurUserService {
     @Override
     public Boolean deleteUserByOpenId(String userOpenId) {
         return userDao.deleteUserByOpenId(userOpenId) >= 1;
+    }
+
+    @Override
+    public User findByOpenId(String openId) {
+        return userDao.findByOpenId(openId);
     }
 }

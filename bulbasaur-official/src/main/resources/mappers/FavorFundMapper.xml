@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huiaong.bulbasau.rofficial.dao.IBulbasaurFavorFundDao">
+    <resultMap id="favorFundResultMap" type="FavorFund">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="fund_code" property="fundCode"/>
+        <result column="create_at" property="createAt"/>
+        <result column="update_at" property="updateAt"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <sql id="all_cols_exclude_id">
+        user_id, fund_code, create_at, update_at, del_flag
+    </sql>
+
+    <sql id="all_cols">
+        id, <include refid="all_cols_exclude_id"/>
+    </sql>
+
+    <sql id="tb">
+        bulbasaur_favor_fund
+    </sql>
+
+    <select id="findById" resultMap="favorFundResultMap">
+        select <include refid="all_cols"/> from <include refid="tb"/> where id = #{id}
+    </select>
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="User">
+        insert into <include refid="tb"/> (<include refid="all_cols_exclude_id"/>)
+        value (#{userId}, #{fundCode}, #{createAt}, #{updateAt}, #{delFlag})
+    </insert>
+
+    <select id="favorFundExistByOpenIdAndFundCode" resultType="java.lang.Integer">
+        SELECT count(1) FROM <include refid="tb"/> f left join <include refid="com.huiaong.bulbasau.rofficial.dao.IBulbasaurUserDao.tb"/> u
+        on f.user_id = u.id and u.open_id = #{openId} where u.del_flag = 1 and f.del_flag = 1 and fund_code = #{fundCode} LIMIT 1
+    </select>
+
+    <update id="deleteFavorFundByOpenId">
+        update <include refid="tb"/> f left join <include refid="com.huiaong.bulbasau.rofficial.dao.IBulbasaurUserDao.tb"/> u
+        on f.user_id = u.id and u.open_id = #{openId} set f.del_flag = 3 where u.del_flag = 1 and f.del_flag = 1
+    </update>
+
+    <select id="findByOpenId" resultMap="favorFundResultMap">
+        select f.id, f.user_id, f.fund_code, f.create_at, f.update_at, f.del_flag
+        from <include refid="tb"/> f left join <include refid="com.huiaong.bulbasau.rofficial.dao.IBulbasaurUserDao.tb"/> u
+        on f.user_id = u.id and u.open_id = #{openId}
+        where u.del_flag = 1 and f.del_flag = 1
+    </select>
+
+
+
+
+</mapper>

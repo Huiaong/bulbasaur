@@ -118,7 +118,7 @@ public class MessageContains {
     public static String process(String text) {
         if (StrUtil.equals("?", text) || StrUtil.equals("？", text)) {
             return PROCESS_QUESTION_MARK;
-        } else if (REUtil.matches("\\d{6}", text)) {
+        } else if (REUtil.matches("^\\d{6}$|^\\+$|^\\+\\d{6}$", text)) {
             return PROCESS_TEXT_FUND_CODE;
         }
         return PROCESS_TEXT_SHIT;

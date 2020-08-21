@@ -11,4 +11,6 @@ public interface IBulbasaurUserService {
     Boolean create(User user);
 
     Boolean deleteUserByOpenId(String userOpenId);
+
+    User findByOpenId(String openId);
 }

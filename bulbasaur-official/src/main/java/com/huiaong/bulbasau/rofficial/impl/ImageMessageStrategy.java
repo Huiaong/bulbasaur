@@ -7,8 +7,9 @@ import com.huiaong.bulbasau.rofficial.utils.MessageUtil;
 import com.huiaong.bulbasau.service.IMessageStrategy;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class ImageMessageStrategy implements IMessageStrategy {
         NewsMessage newmsg = new NewsMessage();
         newmsg.setToUserName(map.get("FromUserName"));
         newmsg.setFromUserName(map.get("ToUserName"));
-        newmsg.setCreateTime(new Date().getTime());
+        newmsg.setCreateTime(LocalDateTime.now().toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
         newmsg.setMsgType(MessageContains.RESP_MESSAGE_TYPE_NEWS);
 
         Article article = new Article();

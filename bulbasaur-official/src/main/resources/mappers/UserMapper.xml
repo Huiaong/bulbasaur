@@ -23,17 +23,21 @@
     </sql>
 
     <select id="findById" resultMap="userResultMap">
-        select <include refid="all_cols"/> from <include refid="tb"/> where id = #{id}
+        select <include refid="all_cols"/> from <include refid="tb"/> where id = #{id} and del_flag = 1
+    </select>
+
+    <select id="findByOpenId" resultMap="userResultMap">
+        select <include refid="all_cols"/> from <include refid="tb"/> where open_id = #{openId} and del_flag = 1
+    </select>
+
+    <select id="userExistByOpenId" resultType="java.lang.Integer">
+        SELECT count(1) FROM <include refid="tb"/> where open_id = #{openId} and del_flag = 1 LIMIT 1
     </select>
 
     <insert id="insert" keyProperty="id" useGeneratedKeys="true" parameterType="User">
         insert into <include refid="tb"/> (<include refid="all_cols_exclude_id"/>)
         value (#{openId}, #{status}, #{createAt}, #{updateAt}, #{delFlag})
     </insert>
-
-    <select id="userExistByOpenId" resultType="java.lang.Integer">
-        SELECT count(1) FROM <include refid="tb"/> where open_id = #{openId} and del_flag = 1 LIMIT 1
-    </select>
 
     <update id="deleteUserByOpenId">
         update <include refid="tb"/> set del_flag = 3 where open_id = #{openId}

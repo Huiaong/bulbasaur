@@ -14,8 +14,8 @@ public class TextProcessHandle {
     @Autowired
     private final Map<String, ITextProcess> strategyMap = new ConcurrentHashMap<>();
 
-    public String handleText(String text) {
+    public String handleText(String text, String fromUserName) {
 
-        return this.strategyMap.get(MessageContains.process(text)).processText(text);
+        return this.strategyMap.get(MessageContains.process(text)).processText(text, fromUserName);
     }
 }

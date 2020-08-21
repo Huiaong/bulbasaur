@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
 
 @Slf4j
-public class BulbasaurUserUserServiceImplTest extends BulbasaurOfficialApplicationTests {
+public class BulbasaurUserServiceImplTest extends BulbasaurOfficialApplicationTests {
 
     @Autowired
     private IBulbasaurUserService userService;

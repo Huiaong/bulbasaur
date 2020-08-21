@@ -11,7 +11,7 @@ public class TextProcessDispatcher {
     @Autowired
     private TextProcessHandle textProcessHandle;
 
-    public String dispatch(String content) {
-        return textProcessHandle.handleText(content);
+    public String dispatch(String content, String fromUserName) {
+        return textProcessHandle.handleText(content, fromUserName);
     }
 }

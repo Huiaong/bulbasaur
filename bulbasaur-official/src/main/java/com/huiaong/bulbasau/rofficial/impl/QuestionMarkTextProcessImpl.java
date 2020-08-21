@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class QuestionMarkTextProcessImpl implements ITextProcess {
 
     @Override
-    public String processText(String text) {
-        return "回复基金代码获取今日基金估值";
+    public String processText(String text, String fromUserName) {
+        return "回复基金代码获取今日基金估值\n\n回复\"+\"或\"+008888\"收藏基金";
     }
 }
