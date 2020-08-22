@@ -21,9 +21,4 @@ public class TextProcessContains {
      * 处理类型：LIST(已关注的基金)
      */
     public static final String PROCESS_LIST = "LIST";
-
-    /**
-     * 处理类型：LIST(管理我的基金)
-     */
-    public static final String PROCESS_MANAGER = "MANAGER";
 }
