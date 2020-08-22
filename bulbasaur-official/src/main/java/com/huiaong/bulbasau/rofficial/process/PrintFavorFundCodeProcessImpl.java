@@ -50,6 +50,11 @@ public class PrintFavorFundCodeProcessImpl implements IFavorFundCodeProcess {
             sb.append("\n");
         }
 
+        return this.justPrint(text);
+    }
+
+    public String justPrint(String text){
+        StringBuilder sb = new StringBuilder();
 
         Optional<Fund> fundOptional = this.getFund(text);
 
@@ -59,11 +64,13 @@ public class PrintFavorFundCodeProcessImpl implements IFavorFundCodeProcess {
         }
         Fund fund = fundOptional.get();
 
-        sb.append("基金名 基金代码 今日估值\n");
-        sb.append(fund.getName()).append(" ");
-        sb.append(fund.getFundcode()).append(" ");
-        sb.append(fund.getGszzl()).append("\n");
+        log.info("find fund:{}", JSONUtil.toJsonStr(fund));
+
+        sb.append("基金名:").append(fund.getName()).append("\n");
+        sb.append("基金代码:").append(fund.getFundcode()).append("\n");
+        sb.append("截止").append(fund.getGztime()).append("估值:").append(fund.getGszzl()).append("\n");
         return sb.toString();
+
     }
 
     private Optional<Fund> getFund(String text) {

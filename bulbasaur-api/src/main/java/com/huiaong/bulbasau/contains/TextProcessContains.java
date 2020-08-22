@@ -16,4 +16,14 @@ public class TextProcessContains {
      * 处理类型：QUESTION_MARK(提示文本)
      */
     public static final String PROCESS_QUESTION_MARK = "QUESTION_MARK";
+
+    /**
+     * 处理类型：LIST(已关注的基金)
+     */
+    public static final String PROCESS_LIST = "LIST";
+
+    /**
+     * 处理类型：LIST(管理我的基金)
+     */
+    public static final String PROCESS_MANAGER = "MANAGER";
 }

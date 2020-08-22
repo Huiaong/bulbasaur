@@ -15,6 +15,8 @@ import java.util.stream.Stream;
 public class TextProcessHandle {
     public static final String[] QUESTION_MARK = {"?", "？"};
     public static final String[] FUND_CODE_RE = {"^\\d{6}$", "^\\+$", "^\\+\\d{6}$", "^-$", "^-\\d{6}$"};
+    public static final String[] FUND_CODE_LIST = {"list", "l", "我的"};
+    public static final String[] FUND_CODE_MANAGER = {"manager", "m", "管理"};
 
 
     @Autowired
@@ -25,6 +27,10 @@ public class TextProcessHandle {
             return TextProcessContains.PROCESS_QUESTION_MARK;
         } else if (Stream.of(FUND_CODE_RE).anyMatch(e -> REUtil.matches(e, text))) {
             return TextProcessContains.PROCESS_TEXT_FUND_CODE;
+        }else if (Stream.of(FUND_CODE_LIST).anyMatch(e -> StrUtil.equals(e, text))){
+            return TextProcessContains.PROCESS_LIST;
+        }else if (Stream.of(FUND_CODE_MANAGER).anyMatch(e -> StrUtil.equals(e, text))){
+            return TextProcessContains.PROCESS_MANAGER;
         }
         return TextProcessContains.PROCESS_TEXT_SHIT;
     }

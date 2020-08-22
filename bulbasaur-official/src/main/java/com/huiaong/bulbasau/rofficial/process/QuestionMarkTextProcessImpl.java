@@ -12,6 +12,12 @@ public class QuestionMarkTextProcessImpl implements ITextProcess {
     @Override
     public String processText(String text, String fromUserName) {
         log.info("Handling tips, {} by {}", text, fromUserName);
-        return "回复基金代码获取今日基金估值\n\n回复\"+\"或\"+008888\"收藏基金";
+        return "回复基金代码获取今日基金估值" +
+                "\n\n" +
+                "回复\"+\"或\"+008888\"收藏基金" +
+                "\n\n" +
+                "回复\"list、l、我的\"查看已收藏基金" +
+                "\n\n" +
+                "回复\"manager、m、管理\"管理我的基金";
     }
 }
