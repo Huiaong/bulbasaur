@@ -16,6 +16,8 @@ public class QuestionMarkTextProcessImpl implements ITextProcess {
                 "\n\n" +
                 "回复\"+\"或\"+008888\"收藏基金" +
                 "\n\n" +
+                "回复\"-\"或\"-008888\"取消收藏基金" +
+                "\n\n" +
                 "回复\"list、l、我的\"查看已收藏基金";
     }
 }
