@@ -53,7 +53,7 @@ public class PrintFavorFundCodeProcessImpl implements IFavorFundCodeProcess {
         return this.justPrint(text);
     }
 
-    public String justPrint(String text){
+    public String justPrint(String text) {
         StringBuilder sb = new StringBuilder();
 
         Optional<Fund> fundOptional = this.getFund(text);

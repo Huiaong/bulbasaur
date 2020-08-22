@@ -27,9 +27,9 @@ public class TextProcessHandle {
             return TextProcessContains.PROCESS_QUESTION_MARK;
         } else if (Stream.of(FUND_CODE_RE).anyMatch(e -> REUtil.matches(e, text))) {
             return TextProcessContains.PROCESS_TEXT_FUND_CODE;
-        }else if (Stream.of(FUND_CODE_LIST).anyMatch(e -> StrUtil.equals(e, text))){
+        } else if (Stream.of(FUND_CODE_LIST).anyMatch(e -> StrUtil.equals(e, text))) {
             return TextProcessContains.PROCESS_LIST;
-        }else if (Stream.of(FUND_CODE_MANAGER).anyMatch(e -> StrUtil.equals(e, text))){
+        } else if (Stream.of(FUND_CODE_MANAGER).anyMatch(e -> StrUtil.equals(e, text))) {
             return TextProcessContains.PROCESS_MANAGER;
         }
         return TextProcessContains.PROCESS_TEXT_SHIT;

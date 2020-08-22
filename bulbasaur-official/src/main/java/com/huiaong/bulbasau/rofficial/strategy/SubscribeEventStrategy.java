@@ -7,6 +7,7 @@ import com.huiaong.bulbasau.entity.User;
 import com.huiaong.bulbasau.rofficial.utils.MessageUtil;
 import com.huiaong.bulbasau.service.IBulbasaurUserService;
 import com.huiaong.bulbasau.strategy.IEventStrategy;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Map;
 
+@Slf4j
 @Component(EventContains.EVENT_TYPE_SUBSCRIBE)
 public class SubscribeEventStrategy implements IEventStrategy {
 
@@ -26,6 +28,9 @@ public class SubscribeEventStrategy implements IEventStrategy {
         String userOpenId = map.get("FromUserName");
         String createAt = map.get("CreateTime");
         String toUserName = map.get("ToUserName");
+
+        log.info("Handling subscribe event, by {}", userOpenId);
+
         String content = "欢迎关注狐妖昂昂[Respect]\n快回复'?'查看公众号玩法吧";
 
         TextMessage txtmsg = new TextMessage();
@@ -54,3 +59,5 @@ public class SubscribeEventStrategy implements IEventStrategy {
         return MessageUtil.textMessageToXml(txtmsg);
     }
 }
+
+
