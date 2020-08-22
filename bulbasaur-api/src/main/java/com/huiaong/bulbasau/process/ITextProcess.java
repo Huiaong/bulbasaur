@@ -1,4 +1,4 @@
-package com.huiaong.bulbasau.service;
+package com.huiaong.bulbasau.process;
 
 public interface ITextProcess {
 

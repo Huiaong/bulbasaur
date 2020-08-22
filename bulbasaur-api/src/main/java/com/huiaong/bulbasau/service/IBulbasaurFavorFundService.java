@@ -11,4 +11,8 @@ public interface IBulbasaurFavorFundService {
     List<FavorFund> findByOpenId(String openId);
 
     Boolean favorFundExistByOpenIdAndFundCode(String openId, String text);
+
+    FavorFund findByOpenIdAndFundCode(String openId, String text);
+
+    Boolean deleteById(Long id);
 }

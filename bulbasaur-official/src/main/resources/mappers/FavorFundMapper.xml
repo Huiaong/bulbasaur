@@ -48,6 +48,17 @@
         where u.del_flag = 1 and f.del_flag = 1
     </select>
 
+    <select id="findByOpenIdAndFundCode" resultMap="favorFundResultMap">
+        select f.id, f.user_id, f.fund_code, f.create_at, f.update_at, f.del_flag
+        from <include refid="tb"/> f left join <include refid="com.huiaong.bulbasau.rofficial.dao.IBulbasaurUserDao.tb"/> u
+        on f.user_id = u.id and u.open_id = #{openId} and f.fund_code = #{fundCode}
+        where u.del_flag = 1 and f.del_flag = 1
+    </select>
+
+    <update id="deleteById">
+        update <include refid="tb"/>  set del_flag = 3 where del_flag = 1 and id = #{id}
+    </update>
+
 
 
 

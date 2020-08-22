@@ -1,10 +1,11 @@
-package com.huiaong.bulbasau.rofficial.impl;
+package com.huiaong.bulbasau.rofficial.strategy;
 
 import com.huiaong.bulbasau.contains.MessageContains;
+import com.huiaong.bulbasau.contains.ResponseContains;
 import com.huiaong.bulbasau.entity.TextMessage;
-import com.huiaong.bulbasau.rofficial.dispatcher.TextProcessDispatcher;
+import com.huiaong.bulbasau.rofficial.handler.TextProcessHandle;
 import com.huiaong.bulbasau.rofficial.utils.MessageUtil;
-import com.huiaong.bulbasau.service.IMessageStrategy;
+import com.huiaong.bulbasau.strategy.IMessageStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,7 @@ import java.util.Map;
 public class TextMessageStrategy implements IMessageStrategy {
 
     @Autowired
-    private TextProcessDispatcher textProcessDispatcher;
+    private TextProcessHandle textProcessHandle;
 
     @Override
     public String processingMessage(Map<String, String> map) {
@@ -27,10 +28,10 @@ public class TextMessageStrategy implements IMessageStrategy {
         txtmsg.setToUserName(fromUserName);
         txtmsg.setFromUserName(toUserName);
         txtmsg.setCreateTime(LocalDateTime.now().toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
-        txtmsg.setMsgType(MessageContains.RESP_MESSAGE_TYPE_TEXT);
+        txtmsg.setMsgType(ResponseContains.RESP_MESSAGE_TYPE_TEXT);
 
         String content = map.get("Content");
-        String text = textProcessDispatcher.dispatch(content, fromUserName);
+        String text = textProcessHandle.handleText(content, fromUserName);
         txtmsg.setContent(text);
 
         return MessageUtil.textMessageToXml(txtmsg);

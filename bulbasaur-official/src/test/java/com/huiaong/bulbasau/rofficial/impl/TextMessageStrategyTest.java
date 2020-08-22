@@ -2,7 +2,7 @@ package com.huiaong.bulbasau.rofficial.impl;
 
 import com.huiaong.bulbasau.contains.MessageContains;
 import com.huiaong.bulbasau.rofficial.BulbasaurOfficialApplicationTests;
-import com.huiaong.bulbasau.service.IMessageStrategy;
+import com.huiaong.bulbasau.strategy.IMessageStrategy;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;

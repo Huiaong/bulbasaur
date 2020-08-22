@@ -1,9 +1,7 @@
 package com.huiaong.bulbasau.rofficial.controller;
 
 import com.google.common.base.Throwables;
-import com.huiaong.bulbasau.contains.MessageContains;
-import com.huiaong.bulbasau.rofficial.dispatcher.EventDispatcher;
-import com.huiaong.bulbasau.rofficial.dispatcher.MsgDispatcher;
+import com.huiaong.bulbasau.rofficial.handler.MessageHandle;
 import com.huiaong.bulbasau.rofficial.utils.MessageUtil;
 import com.huiaong.bulbasaur.common.util.CheckUtil;
 import com.huiaong.bulbasaur.common.util.JsonMapper;
@@ -32,9 +30,7 @@ import java.util.Map;
 public class WechatValidatorController {
 
     @Autowired
-    private MsgDispatcher msgDispatcher;
-    @Autowired
-    private EventDispatcher eventDispatcher;
+    private MessageHandle messageHandle;
 
 
     @RequestMapping(value = "/keyword", method = RequestMethod.GET)
@@ -63,12 +59,7 @@ public class WechatValidatorController {
             Map<String, String> map = MessageUtil.parseXml(request);
             log.info("map:{}", JsonMapper.nonDefaultMapper().toJson(map));
 
-            String msgtype = map.get("MsgType");
-            if (MessageContains.REQ_MESSAGE_TYPE_EVENT.equals(msgtype)) {
-                return eventDispatcher.processEvent(map); //进入事件处理
-            } else {
-                return msgDispatcher.processMessage(map); //进入消息处理
-            }
+            return messageHandle.process(map); //进入消息处理
         } catch (Exception e) {
             log.error(Throwables.getStackTraceAsString(e));
         }

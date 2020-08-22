@@ -30,4 +30,14 @@ public class BulbasaurFavorFundServiceImpl implements IBulbasaurFavorFundService
     public Boolean favorFundExistByOpenIdAndFundCode(String openId, String text) {
         return favorFundDao.favorFundExistByOpenIdAndFundCode(openId, text) > 0;
     }
+
+    @Override
+    public FavorFund findByOpenIdAndFundCode(String openId, String text) {
+        return favorFundDao.findByOpenIdAndFundCode(openId, text);
+    }
+
+    @Override
+    public Boolean deleteById(Long id) {
+        return favorFundDao.deleteById(id) > 0;
+    }
 }

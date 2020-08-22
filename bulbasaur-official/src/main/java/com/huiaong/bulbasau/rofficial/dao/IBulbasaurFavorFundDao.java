@@ -16,4 +16,8 @@ public interface IBulbasaurFavorFundDao {
     Integer deleteFavorFundByOpenId(String openId);
 
     List<FavorFund> findByOpenId(String openId);
+
+    FavorFund findByOpenIdAndFundCode(@Param("openId") String openId, @Param("fundCode") String fundCode);
+
+    Integer deleteById(Long id);
 }

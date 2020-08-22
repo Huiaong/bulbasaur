@@ -1,14 +1,14 @@
-package com.huiaong.bulbasau.rofficial.impl;
+package com.huiaong.bulbasau.rofficial.strategy;
 
-import com.huiaong.bulbasau.contains.MessageContains;
+import com.huiaong.bulbasau.contains.EventContains;
 import com.huiaong.bulbasau.service.IBulbasaurUserService;
-import com.huiaong.bulbasau.service.IEventStrategy;
+import com.huiaong.bulbasau.strategy.IEventStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@Component(MessageContains.EVENT_TYPE_UNSUBSCRIBE)
+@Component(EventContains.EVENT_TYPE_UNSUBSCRIBE)
 public class UnsubscribeEventStrategy implements IEventStrategy {
 
     @Autowired

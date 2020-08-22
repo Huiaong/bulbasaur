@@ -1,11 +1,12 @@
-package com.huiaong.bulbasau.rofficial.impl;
+package com.huiaong.bulbasau.rofficial.strategy;
 
-import com.huiaong.bulbasau.contains.MessageContains;
+import com.huiaong.bulbasau.contains.EventContains;
+import com.huiaong.bulbasau.contains.ResponseContains;
 import com.huiaong.bulbasau.entity.TextMessage;
 import com.huiaong.bulbasau.entity.User;
 import com.huiaong.bulbasau.rofficial.utils.MessageUtil;
 import com.huiaong.bulbasau.service.IBulbasaurUserService;
-import com.huiaong.bulbasau.service.IEventStrategy;
+import com.huiaong.bulbasau.strategy.IEventStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Map;
 
-@Component(MessageContains.EVENT_TYPE_SUBSCRIBE)
+@Component(EventContains.EVENT_TYPE_SUBSCRIBE)
 public class SubscribeEventStrategy implements IEventStrategy {
 
     @Autowired
@@ -31,7 +32,7 @@ public class SubscribeEventStrategy implements IEventStrategy {
         txtmsg.setFromUserName(toUserName);
         txtmsg.setToUserName(userOpenId);
         txtmsg.setCreateTime(LocalDateTime.now().toInstant(ZoneOffset.ofHours(8)).toEpochMilli());
-        txtmsg.setMsgType(MessageContains.RESP_MESSAGE_TYPE_TEXT);
+        txtmsg.setMsgType(ResponseContains.RESP_MESSAGE_TYPE_TEXT);
 
         Boolean userExist = userService.userExistByOpenId(userOpenId);
         if (!userExist) {
