@@ -1,10 +1,10 @@
 package com.huiaong.bulbasau.rofficial.controller;
 
+import cn.hutool.json.JSONUtil;
 import com.google.common.base.Throwables;
 import com.huiaong.bulbasau.rofficial.handler.MessageHandle;
 import com.huiaong.bulbasau.rofficial.utils.MessageUtil;
 import com.huiaong.bulbasaur.common.util.CheckUtil;
-import com.huiaong.bulbasaur.common.util.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,7 +57,7 @@ public class WechatValidatorController {
     public String keyword(HttpServletRequest request) {
         try {
             Map<String, String> map = MessageUtil.parseXml(request);
-            log.info("map:{}", JsonMapper.nonDefaultMapper().toJson(map));
+            log.info("map:{}", JSONUtil.toJsonStr(map));
 
             return messageHandle.process(map); //进入消息处理
         } catch (Exception e) {
